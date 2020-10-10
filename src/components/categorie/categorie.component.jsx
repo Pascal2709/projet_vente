@@ -13,29 +13,34 @@ class Categorie extends React.Component {
                 {
                     titre: 'chapeaux',
                     imageUrl: 'https://i.ibb.co/cvpntL1/hats.png',
-                    id: 1
+                    id: 1,
+                    linkUrl: 'chapeaux'
                 },
                 {
                     titre: 'vestes',
                     imageUrl: 'https://i.ibb.co/px2tCc3/jackets.png',
-                    id: 2
+                    id: 2,
+                    linkUrl: 'vestes'
                 },
                 {
                     titre: 'baskets',
                     imageUrl: 'https://i.ibb.co/0jqHpnp/sneakers.png',
-                    id: 3
+                    id: 3,
+                    linkUrl: 'baskets'
                 },
                 {
                     titre: 'femmes',
                     imageUrl: 'https://i.ibb.co/GCCdy8t/womens.png',
                     taille: 'large',
-                    id: 4
+                    id: 4,
+                    linkUrl: 'femmes'
                 },
                 {
                     titre: 'hommes',
                     imageUrl: 'https://i.ibb.co/R70vBrQ/men.png',
                     taille: 'large',
-                    id: 5
+                    id: 5,
+                    linkUrl: 'hommes'
                 }
             ]
         }
@@ -45,8 +50,8 @@ class Categorie extends React.Component {
         return (
             <div className="categories">
                 {
-                    this.stage.sections.map(({titre, imageUrl, id, taille}) => (
-                        <ChoixItem key={id} titre={titre} imageUrl={imageUrl} taille={taille}/>
+                    this.stage.sections.map(({titre, imageUrl, id, taille, linkUrl}) => (
+                        <ChoixItem key={id} titre={titre} imageUrl={imageUrl} taille={taille} linkUrl={linkUrl}/>
                     ))
                 }
             </div>
