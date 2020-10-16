@@ -1,14 +1,14 @@
 import React from "react";
 
-import ChoixItem from '../choix-Item/choix-item.component'
+import ChoixItem from "../choix-Item/choix-item.component";
 
 import './categorie.styles.scss'
 
 class Categorie extends React.Component {
     constructor() {
-        super()
+        super();
 
-        this.stage = {
+        this.state = {
             sections : [
                 {
                     titre: 'chapeaux',
@@ -50,8 +50,8 @@ class Categorie extends React.Component {
         return (
             <div className="categories">
                 {
-                    this.stage.sections.map(({titre, imageUrl, id, taille, linkUrl}) => (
-                        <ChoixItem key={id} titre={titre} imageUrl={imageUrl} taille={taille} linkUrl={linkUrl}/>
+                    this.state.sections.map(({id, ...autreSectionProps}) => (
+                        <ChoixItem key={id} {...autreSectionProps} />
                     ))
                 }
             </div>

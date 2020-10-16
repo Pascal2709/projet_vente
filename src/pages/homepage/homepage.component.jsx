@@ -1,6 +1,6 @@
 import React from "react";
 
-import Categories from '../../components/categorie/categorie.component'
+import Categories from "../../components/categorie/categorie.component";
 
 import './homepage.styles.scss'
 
@@ -9,5 +9,4 @@ const HomePage = () => (
         <Categories/>
     </div>
 )
-
 export default HomePage
