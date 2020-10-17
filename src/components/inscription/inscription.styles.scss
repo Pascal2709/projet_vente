@@ -1,0 +1,10 @@
+.inscription {
+  display: flex;
+  flex-direction: column;
+  width: 450px;
+  padding-left: 50px;
+
+  .titre {
+    margin: 10px 0;
+  }
+}

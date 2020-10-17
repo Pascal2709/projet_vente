@@ -11,12 +11,40 @@ const config = {
         messagingSenderId: "832168023569",
         appId: "1:832168023569:web:8e8b876bd34641d90983b0",
         measurementId: "G-G4P2VMLWC0"
+};
+
+export const creerUserProfilDocument = async (userAuth, autreData) => {
+        if (!userAuth) return //on quitte si pas de connexion ( null )
+
+        const userRef = firestore.doc('users/KbclthMtw1SgFt9HLL6polCrKel2')
+
+        const capture = await userRef.get()
+
+                if (!capture.exists) {
+                        const { displayName, email } = userAuth
+                        const createAt = new Date()
+
+
+                        try {
+                                await userRef.set({
+                                        displayName,
+                                        email,
+                                        createAt,
+                                        ...autreData
+                                })
+                        } catch (error) {
+                                console.log("Erreur a la creation utilisateur",error.message)
+                        }
+                }
+
+        return userRef
 }
 
 firebase.initializeApp(config)
 
 export const auth = firebase.auth()
 export const firestore = firebase.firestore()
+
 
 const provider = new firebase.auth.GoogleAuthProvider()
 provider.setCustomParameters({ prompt: 'select_account' })
