@@ -1,7 +1,7 @@
 import React from "react";
 import FormInput from "../form-input/form-input.component";
 import BoutonCustom from "../bouton_custom/bouton-custom.component";
-import { loginAvecGoogle } from "../../firebase/firebase.utils";
+import { auth, loginAvecGoogle } from "../../firebase/firebase.utils";
 import './login.styles.scss'
 
 class Login extends React.Component {
@@ -14,9 +14,17 @@ class Login extends React.Component {
         }
     }
 
-    gestionSubmit = event => {
+    gestionSubmit = async event => {
         event.preventDefault()
-        this.setState({email:'', password:''})
+
+        const { email, password } = this.state
+
+        try {
+            await auth.createUserWithEmailAndPassword(email, password)
+            this.setState({email: '', password: ''})
+        } catch (error) {
+            console.log(error)
+        }
     }
 
     gestionChangement = event => {
