@@ -1,7 +1,9 @@
 import CaddieActionTypes from "./caddie.types";
+import { ajouteItemAuCaddie } from "./caddie.utils";
 
 const INITIAL_STATE = {
-    hidden: true
+    hidden: true,
+    caddieItems: []
 }
 
 const caddieReducer = (state = INITIAL_STATE, action) => {
@@ -10,6 +12,11 @@ const caddieReducer = (state = INITIAL_STATE, action) => {
             return {
                 ...state,
                 hidden: !state.hidden
+            }
+        case CaddieActionTypes.AJOUTE_ITEM:
+            return {
+                ...state,
+                caddieItems: ajouteItemAuCaddie(state.caddieItems, action.payload)
             }
         default:
             return state

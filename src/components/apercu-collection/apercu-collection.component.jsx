@@ -8,8 +8,8 @@ const ApercuCollection = ({ titre, items}) => (
         <h1 className="titre">{titre.toUpperCase()}</h1>
         <div className="apercu">
             {
-                items.filter((item, idx) => idx < 4).map(({id, ...otherItemPorps}) => (
-                    <CollectionItem key={id} {...otherItemPorps} />
+                items.filter((item, idx) => idx < 4).map(item => (
+                    <CollectionItem key={item.id} item={item} />
                 ))
             }
         </div>
