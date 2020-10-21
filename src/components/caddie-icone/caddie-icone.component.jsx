@@ -1,5 +1,6 @@
 import React from "react";
 import { connect } from 'react-redux'
+import { createStructuredSelector } from "reselect";
 import { toggleCaddieHidden } from "../../redux/caddie/caddie.action";
 import { selectCaddieCompteElements } from "../../redux/caddie/caddie.selectors";
 import { ReactComponent as ShoppingIcon } from '../../assets/shopping.svg'
@@ -17,8 +18,8 @@ const mapDispatchToProps = dispatch => ({
     toggleCaddieHidden: () => dispatch(toggleCaddieHidden())
 })
 
-const mapStateToProsp = ( state ) => ({
-    itemCompte: selectCaddieCompteElements(state)
+const mapStateToProsp = createStructuredSelector ({
+    itemCompte: selectCaddieCompteElements
 })
 
 export default connect(mapStateToProsp, mapDispatchToProps)(CaddieIcon)
