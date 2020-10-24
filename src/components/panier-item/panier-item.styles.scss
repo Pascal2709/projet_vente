@@ -24,7 +24,13 @@
   }
 
   .quantite {
-    padding-left: 20px;
+    display: flex;
+    .fleche {
+      cursor: pointer;
+    }
+    .valeur {
+      margin: 0 10px;
+    }
   }
 
   .supprime-boutton {

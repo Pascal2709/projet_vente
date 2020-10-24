@@ -1,5 +1,5 @@
 import CaddieActionTypes from "./caddie.types";
-import { ajouteItemAuCaddie } from "./caddie.utils";
+import { ajouteItemAuCaddie, diminuerQuantite } from "./caddie.utils";
 
 const INITIAL_STATE = {
     hidden: true,
@@ -17,6 +17,18 @@ const caddieReducer = (state = INITIAL_STATE, action) => {
             return {
                 ...state,
                 caddieItems: ajouteItemAuCaddie(state.caddieItems, action.payload)
+            }
+        case CaddieActionTypes.DIMINUE_ITEM:
+            return {
+                ...state,
+                caddieItems: diminuerQuantite(state.caddieItems, action.payload)
+            }
+        case CaddieActionTypes.SUPPRIME_ITEM_DU_PANIER:
+            return {
+                ...state,
+                caddieItems: state.caddieItems.filter(
+                    caddieItem => caddieItem.id !== action.payload.id
+                )
             }
         default:
             return state
