@@ -4,6 +4,7 @@ import { createStructuredSelector } from "reselect";
 import PanierItem from "../../components/panier-item/panier-item.component";
 
 import { selectCaddieItems, selectCaddieTotal } from "../../redux/caddie/caddie.selectors";
+import StripeCheckoutBouton from "../../components/stripe-bouton/stripe-bouton.component";
 
 import './panier.styles.scss'
 
@@ -34,6 +35,12 @@ const PanierPage = ({caddieItems, total}) => (
         <div className='total'>
             <span>{total} €</span>
         </div>
+        <div className="test-message">
+            *SVP Utiliser la carte suivante pour vos test
+            <br/>
+            4242 4242 4242 4242 - Exp: 01/23 - CVV: 123
+        </div>
+        <StripeCheckoutBouton prix={total} />
     </div>
 )
 
